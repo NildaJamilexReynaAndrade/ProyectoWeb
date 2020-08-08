@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar {{cliente}}</title>
+    {% load static %}
+    <!-- Bootstrap -->
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light " >
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href='/'>{{menu}} <span class="sr-only">(current)</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/venta">{{ venta }}</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/producto">{{ producto }}</a>
+      </li>
+     <li class="nav-item">
+        <a class="nav-link" href="/cliente">{{ cliente }}</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/admin">{{ administrar }}</a>
+      </li>
+    </ul>
+  </div>
+
+</nav>
+</div>
+
+<div class="container">
+    <br><br><br>
+     <div class="card card-statistics clients-contant">
+                        <div class="card-header">
+                            <div class="d-xxs-flex justify-content-between align-items-center">
+                                <div class="card-heading"></div>
+
+                                <div class="mt-xxs-0 mt-3 btn-group btn-group-toggle" data-toggle="buttons">
+                                    <a href="{% url 'cliente'%}" class="btn btn-sm btn-round btn-info">Nuevo Cliente</a>
+                                </div>
+                            </div>
+                        </div>
+    <div class="row">
+    <div class="col-md-1"></div>
+
+    <div class="col-md-10">
+    <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Ruc</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Direccion</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  {% for cliente in clientes %}
+    <tr>
+       <td>{{ cliente.id }}</td>
+        <td>{{ cliente.ruc }}</td>
+        <td>{{ cliente.nombre }}</td>
+        <td>{{ cliente.direccion }}</td>
+
+        <td>
+            <ul>
+
+                <l1><a class="btn btn-info btn-sm" href="{% url 'editarCliente' cliente.id %}">Modifcar</a></l1>
+                <l1><a class="btn btn-danger btn-sm" href="{% url 'eliminarCliente' cliente.id %}">Eliminar</a></l1>
+
+            </ul>
+
+        </td>
+
+    </tr>
+   {% endfor %}
+  </tbody>
+</table>
+
+    </div>
+    <div class="col-md-1"></div>
+</div>
+
+</div>
+</div>
+ <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>

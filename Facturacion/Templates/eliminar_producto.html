@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar {{producto.descripcion}}</title>
+     {% load static %}
+    <!-- Bootstrap -->
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+             <h1 class="text-center">Eliminar {{producto.descripcion}}</h1>
+        </div>
+     <div class="row">
+         <div class="col-md-3">
+
+         </div>
+         <div class="col-md-6">
+             <form action="" method="post">
+        {% csrf_token %}
+        <h3>Estas Seguro de Eliminar El Producto: {{ producto.descripcion }}</h3>
+                 <fieldset class="form-group" >
+                     <button class="form-control  btn btn-success" type="submit">Eliminar</button>
+                 </fieldset>
+                 <fieldset class="form-group" >
+                  <a class="form-control btn btn-danger" href="{% url 'listarProducto' %}">cancelar</a >
+                 </fieldset>
+
+    </form>
+         </div>
+         <div class="col-md-3"></div>
+     </div>
+    </div>
+</body>
+
+</html>
